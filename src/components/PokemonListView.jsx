@@ -32,15 +32,21 @@ const ListView = () => {
 
   // Fetching Pokemon Data in useEffect Hook
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     const getPokemonData = async () => {
       const offset = (currentPage - 1) * itemsPerPage;
       const data = await fetchAllPokemonData(itemsPerPage, offset);
       setPokemonData(data);
     };
 
-    //Abort Controller.
-
     getPokemonData();
+
+    // Aborting the fetch requests on component unmount or when a new request is made
+    return () => {
+      controller.abort();
+    };
   }, [currentPage, itemsPerPage]);
 
   // Setting State for Searching Pokemon
