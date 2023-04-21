@@ -88,7 +88,7 @@ const ListView = () => {
             ))
           )}
         </div>
-        <div className="mx-4 my-8 hidden md:block">
+        <div className="mx-4 my-8  ">
           <PokemonPagination
             pokemon={pokemonData}
             onPageChange={handlePageChange}

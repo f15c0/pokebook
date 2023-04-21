@@ -76,7 +76,7 @@ const Topbar = ({ onSearchUpdate }) => {
       </Portal>
       {/* End of Pinned Header */}
 
-      <Header height={{ base: 50, md: 70 }} className="shadow-sm">
+      <Header height={{ base: 50, md: 70 }} className="shadow-sm pt-2 sm:pt-0">
         <div className="flex items-center justify-between">
           <MediaQuery largerThan="sm" styles={{ display: "none" }}>
             <Burger

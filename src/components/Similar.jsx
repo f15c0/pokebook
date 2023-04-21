@@ -19,7 +19,7 @@ const SimilarPokemon = ({ targetPokemon, allPokemon }) => {
       <h3 className="text-center pt-0 mt-2 pb-2 sm:text-lg text-md">
         Similar Pokémon
       </h3>
-      <div className="sm:grid grid  grid-cols-2 pb-6 mb-3 sm:gap-6 sm:max-w-[80%] mx-auto">
+      <div className="sm:grid grid  grid-cols-2 pb-6 mb-3 gap-6 sm:gap-6 sm:max-w-[80%] mx-auto">
         {similarPokemon.map((pokemon) => (
           <Card
             key={pokemon.id}
