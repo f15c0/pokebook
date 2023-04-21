@@ -4,8 +4,6 @@ import {
   Burger,
   ActionIcon,
   useMantineTheme,
-  Navbar,
-  Text,
   MediaQuery,
   Button,
   useMantineColorScheme,
@@ -41,7 +39,7 @@ const Topbar = ({ onSearchUpdate }) => {
             <TextInput
               icon={<AiOutlineSearch size="1.1rem" stroke={1.5} />}
               radius="xl"
-              className="border-4 border-red-500"
+              className="border-4 border-red-500 hidden sm:block"
               size="md"
               placeholder="Enter pokemon name"
               rightSectionWidth={42}
@@ -54,6 +52,7 @@ const Topbar = ({ onSearchUpdate }) => {
               color={dark ? "yellow" : "blue"}
               onClick={() => toggleColorScheme()}
               title="Toggle color scheme"
+              className="hidden md:block"
             >
               {dark ? <BsSun size="1.1rem" /> : <FaMoon size="1.1rem" />}
             </ActionIcon>

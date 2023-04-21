@@ -1,47 +1,45 @@
 import { Button, Card, Group, Paper, Text } from "@mantine/core";
 
-const SimilarPokemon = () => {
+const SimilarPokemon = ({ targetPokemon, allPokemon }) => {
+  //Function to find similar Pokemons
+  function findSimilarPokemon(targetPokemon, allPokemon) {
+    const targetTypes = targetPokemon.types.map((typeObj) => typeObj.type.name);
+    const similarPokemon = allPokemon.filter((pokemon) => {
+      const pokemonTypes = pokemon.types.map((typeObj) => typeObj.type.name);
+      return targetTypes.some((type) => pokemonTypes.includes(type));
+    });
+
+    // Removing the target Pokémon from the similar Pokémon array
+    return similarPokemon.filter((pokemon) => pokemon.id !== targetPokemon.id);
+  }
+
+  const similarPokemon = findSimilarPokemon(targetPokemon, allPokemon);
   return (
     <>
-      <h3 className="text-center">Similar</h3>
-      <div className="grid grid-cols-2 pb-6 mb-3">
-        <Card
-          shadow="sm"
-          padding="sm"
-          radius="xl"
-          className="relative overflow-visible w-40 h-36"
-        >
-          <div className="h-20 bg-pokemonBg rounded-2xl text-center relative">
-            <img
-              src="https://archives.bulbagarden.net/media/upload/a/a0/0006Charizard-Mega_Y.png"
-              alt="Chizard"
-              className="absolute -top-6 left-1/2 transform -translate-x-1/2 h-24 -translate-y-4"
-            />
-          </div>
-
-          <Text weight={500} className="text-center text-2xl">
-            charizard
-          </Text>
-        </Card>
-
-        <Card
-          shadow="sm"
-          padding="sm"
-          radius="xl"
-          className="relative overflow-visible w-40 h-36"
-        >
-          <div className="h-20 bg-pokemonBg rounded-2xl text-center relative">
-            <img
-              src="https://archives.bulbagarden.net/media/upload/a/a0/0006Charizard-Mega_Y.png"
-              alt="Chizard"
-              className="absolute -top-6 left-1/2 transform -translate-x-1/2 h-24 -translate-y-4"
-            />
-          </div>
-
-          <Text weight={500} className="text-center text-2xl">
-            charizard
-          </Text>
-        </Card>
+      <h3 className="text-center pt-0 mt-2 pb-2 sm:text-lg text-md">
+        Similar Pokémon
+      </h3>
+      <div className="sm:grid grid  sm:grid-cols-2 pb-6 mb-3 gap-6 max-w-[80%] mx-auto">
+        {similarPokemon.map((pokemon) => (
+          <Card
+            key={pokemon.id}
+            shadow="sm"
+            padding="xs"
+            radius={16}
+            className="relative overflow-visible w-32  sm:w-full mx-auto sm:h-32"
+          >
+            <div className="h-16 bg-pokemonBg rounded-xl text-center relative">
+              <img
+                src={pokemon.sprites.other.dream_world.front_default}
+                alt={pokemon.name}
+                className="absolute -top-2 left-1/2 transform -translate-x-1/2 h-20 -translate-y-4"
+              />
+            </div>
+            <Text weight={500} className="text-center sm:text-md text-sm pt-2">
+              {pokemon.name}
+            </Text>
+          </Card>
+        ))}
       </div>
     </>
   );

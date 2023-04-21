@@ -35,32 +35,40 @@ const ListView = () => {
     getPokemonData();
   }, []);
 
-  //Setting State for Searchig Pokemon
+  //Setting State for Searching Pokemon
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearchUpdate = (query) => {
     setSearchQuery(query);
   };
 
+  const filteredPokemonData = pokemonData.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
   return (
     <div className="">
       <Topbar onSearchUpdate={handleSearchUpdate} />
-
       <div className="mt-10 pb-4 mb-6 max-w-[80%] mx-auto">
         {pokemonData.length ? (
           <div className="grid xl:grid-cols-4 flex-grow lg:grid-cols-3 md:grid-cols-2 sm:grid-col-2  gap-3">
-            {pokemonData
-              .filter((pokemon) =>
-                pokemon.name.toLowerCase().includes(searchQuery.toLowerCase()),
-              )
-              .map((pokemon) => (
-                <PokemonCard key={pokemon.id} pokemon={pokemon} />
-              ))}
+            {filteredPokemonData.length ? (
+              filteredPokemonData.map((pokemon) => (
+                <PokemonCard
+                  key={pokemon.id}
+                  pokemon={pokemon}
+                  allPokemon={pokemonData}
+                />
+              ))
+            ) : (
+              <h3 className="text-center text-lg">
+                Sorry, No Pokémon found! 🙇🏾‍♂️
+              </h3>
+            )}
           </div>
         ) : (
           <h1>Loading</h1>
         )}
-        <div className="mx-4 my-8">
+        <div className="mx-4 my-8 hidden md:block">
           <PokemonPagination pokemon={pokemonData} />
         </div>
       </div>

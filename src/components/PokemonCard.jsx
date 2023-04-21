@@ -49,7 +49,7 @@ function lightenColor(color, percent) {
   };
 }
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, allPokemon }) => {
   const imgURL = `${pokemon.sprites.other.dream_world.front_default}`;
   const [rgb, setRgb] = useState([]);
 
@@ -231,9 +231,11 @@ const PokemonCard = ({ pokemon }) => {
         </div>
         {content === "About" && <AboutPokemon pokemon={pokemon} />}
         {content === "Stats" && <PokemonStats pokemon={pokemon} />}
-        {content === "Similar" && <SimilarPokemon />}
+        {content === "Similar" && (
+          <SimilarPokemon targetPokemon={pokemon} allPokemon={allPokemon} />
+        )}
 
-        <Group position="center" className="pt-2 mt-2 bottom-0">
+        <Group position="center" className="pt-4 mt-2 bottom-0">
           <SegmentedControl
             transitionDuration={500}
             transitionTimingFunction="linear"
