@@ -3,10 +3,10 @@ import PokemonPagination from "./Pagination";
 import PokemonCard from "./PokemonCard";
 import Topbar from "./Topbar";
 
-//Fetch
-async function fetchAllPokemonData(limit = 8) {
+// Fetching Pokemon Data
+async function fetchAllPokemonData(limit = 10, offset = 0) {
   const response = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=${limit}`,
+    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`,
   );
   const data = await response.json();
 
@@ -22,29 +22,42 @@ async function fetchAllPokemonData(limit = 8) {
 }
 
 const ListView = () => {
-  //Setting Pokemon State
-  const [pokemonData, setPokemonData] = useState([]); //
+  // Setting Pokemon State
+  const [pokemonData, setPokemonData] = useState([]);
 
-  //Fetching Pokemon Data in Effect Hook
+  // Setting State for current page and items per page
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
+
+  // Fetching Pokemon Data in useEffect Hook
   useEffect(() => {
     const getPokemonData = async () => {
-      const data = await fetchAllPokemonData();
+      const offset = (currentPage - 1) * itemsPerPage;
+      const data = await fetchAllPokemonData(itemsPerPage, offset);
       setPokemonData(data);
     };
 
+    //Abort Controller.
+
     getPokemonData();
-  }, []);
+  }, [currentPage, itemsPerPage]);
 
-  //Setting State for Searching Pokemon
+  // Setting State for Searching Pokemon
   const [searchQuery, setSearchQuery] = useState("");
-
   const handleSearchUpdate = (query) => {
     setSearchQuery(query);
   };
 
+  //Filtering Pokemon
   const filteredPokemonData = pokemonData.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(searchQuery.toLowerCase()),
   );
+
+  // Handling page change
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
   return (
     <div className="">
       <Topbar onSearchUpdate={handleSearchUpdate} />
@@ -69,7 +82,13 @@ const ListView = () => {
           <h1>Loading</h1>
         )}
         <div className="mx-4 my-8 hidden md:block">
-          <PokemonPagination pokemon={pokemonData} />
+          <PokemonPagination
+            pokemon={pokemonData}
+            onPageChange={handlePageChange}
+            onItemsPerPageChange={(value) => setItemsPerPage(value)}
+            currentPage={currentPage}
+            itemsPerPage={itemsPerPage}
+          />
         </div>
       </div>
     </div>

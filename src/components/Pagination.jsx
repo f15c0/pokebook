@@ -1,23 +1,38 @@
-import { useState } from "react";
 import { Select, Pagination, useMantineTheme } from "@mantine/core";
-const PokemonPagination = ({ pokemon }) => {
+
+const PokemonPagination = ({
+  pokemon,
+  onPageChange,
+  onItemsPerPageChange,
+  currentPage,
+  itemsPerPage,
+}) => {
   const theme = useMantineTheme();
-  const [activePage, setPage] = useState("8");
 
-  const limit = 5;
-  const perPage = Math.ceil(pokemon?.length / limit);
+  const totalPages = Math.ceil(pokemon?.length);
 
-  const startIndex = (activePage - 1) * limit;
-  const endIndex = startIndex + limit;
-  const activePageData = pokemon?.slice(startIndex, endIndex);
+  const handlePageChange = (newPage) => {
+    onPageChange(newPage);
+  };
+
+  const handleItemsPerPageChange = (value) => {
+    onItemsPerPageChange(parseInt(value));
+  };
+
   return (
     <div className="flex items-center justify-between">
-      <Pagination total={activePage} color={theme.primaryColor} radius="sm" />
+      <Pagination
+        total={totalPages}
+        color={theme.primaryColor}
+        radius="sm"
+        active={currentPage}
+        onChange={handlePageChange}
+      />
       <Select
-        value={activePage}
-        onChange={setPage}
+        value={itemsPerPage.toString()}
+        onChange={handleItemsPerPageChange}
         size="sm"
-        className="w-20 "
+        className="w-20"
         data={["8", "12", "16", "24"]}
       />
     </div>

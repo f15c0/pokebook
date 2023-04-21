@@ -60,7 +60,7 @@ const Topbar = ({ onSearchUpdate }) => {
           <div className="flex items-center space-x-4">
             <ActionIcon
               variant="outline"
-              color={dark ? "yellow" : "blue"}
+              color={dark ? "yellow" : "gray"}
               onClick={() => toggleColorScheme()}
               title="Toggle color scheme"
               className="hidden md:block"
@@ -76,7 +76,7 @@ const Topbar = ({ onSearchUpdate }) => {
                 body: "px-0",
               }}
               onClose={close}
-              title={<Text color={theme.fn.primaryColor()}>Choose Theme</Text>}
+              title={<Text color={theme.fn.primaryColor}>Choose Theme</Text>}
               size="sm"
               centered
               withCloseButton={false}

@@ -10,8 +10,6 @@ import {
   createStyles,
   SegmentedControl,
   rem,
-  Badge,
-  Image,
 } from "@mantine/core";
 import { AiFillEye } from "react-icons/ai";
 import { CgArrowLeft } from "react-icons/cg";
@@ -83,6 +81,10 @@ const PokemonCard = ({ pokemon, allPokemon }) => {
     switch (typeName) {
       case "fire":
         return "🔥";
+      case "electric":
+        return "⚡";
+      case "ground":
+        return "🪨";
       case "flying":
         return "🦋";
       case "poison":
@@ -95,6 +97,10 @@ const PokemonCard = ({ pokemon, allPokemon }) => {
         return "🐞";
       case "water":
         return "💦";
+      case "fighting":
+        return "🤺";
+      case "psychic":
+        return "📿";
       default:
         return "";
     }
@@ -128,8 +134,6 @@ const PokemonCard = ({ pokemon, allPokemon }) => {
       },
     },
   }));
-
-  const { classes } = useStyles();
 
   return (
     <div className="mt-10 mx-3 sm:mx-2 ">
