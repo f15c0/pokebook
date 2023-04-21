@@ -16,7 +16,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { BsSun } from "react-icons/bs";
 import { FaMoon } from "react-icons/fa";
 
-const Topbar = () => {
+const Topbar = ({ onSearchUpdate }) => {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -45,6 +45,7 @@ const Topbar = () => {
               size="md"
               placeholder="Enter pokemon name"
               rightSectionWidth={42}
+              onChange={(event) => onSearchUpdate(event.target.value)}
             />
           </div>
           <div className="flex items-center space-x-4">
