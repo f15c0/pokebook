@@ -1,20 +1,29 @@
 import { TextInput, ActionIcon, useMantineTheme } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
+
 const Search = () => {
   const theme = useMantineTheme();
   const navigate = useNavigate();
 
-  //Creating a click search function
+  // Creating a click search function
   const handleSearchClick = () => {
     navigate("/list-view");
   };
 
+  // Customizing styles for TextInput
+  const customTextInputStyles = {
+    input: {
+      width: "100%",
+      border: `4px solid ${theme.fn.primaryColor()}`,
+    },
+  };
+
   return (
     <TextInput
+      styles={customTextInputStyles}
       radius="xl"
-      className="border-4 border-red-500"
-      size="md"
+      size="lg"
       rightSection={
         <ActionIcon
           size={32}

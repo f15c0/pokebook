@@ -5,7 +5,7 @@ import {
   ColorScheme,
 } from "@mantine/core";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import Layout from "./Layout";
 import ListView from "./components/PokemonListView";
 import { useState } from "react";

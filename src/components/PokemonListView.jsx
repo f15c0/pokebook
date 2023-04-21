@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PokemonPagination from "./Pagination";
 import PokemonCard from "./PokemonCard";
 import Topbar from "./Topbar";
+import Search from "./Search";
 
 // Fetching Pokemon Data
 async function fetchAllPokemonData(limit = 10, offset = 0) {
@@ -61,6 +62,7 @@ const ListView = () => {
   return (
     <div className="">
       <Topbar onSearchUpdate={handleSearchUpdate} />
+
       <div className="mt-10 pb-4 mb-6 max-w-[80%] mx-auto">
         {pokemonData.length ? (
           <div className="grid xl:grid-cols-4 flex-grow lg:grid-cols-3 md:grid-cols-2 sm:grid-col-2  gap-3">
