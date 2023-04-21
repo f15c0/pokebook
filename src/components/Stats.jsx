@@ -1,5 +1,12 @@
 import { Progress, Paper, Text } from "@mantine/core";
 
+function capitalizeFirstLetter(str) {
+  return str
+    .split("-") // Split the string into words
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" "); // Join the words back together
+}
+
 const PokemonStats = ({ pokemon }) => {
   return (
     <>
@@ -12,7 +19,9 @@ const PokemonStats = ({ pokemon }) => {
                 key={statObj.stat.name}
                 className="flex items-center justify-between"
               >
-                <Text className="w-32">{statObj.stat.name}</Text>
+                <Text className="w-32">
+                  {capitalizeFirstLetter(statObj.stat.name)}
+                </Text>
                 <Progress
                   size="md"
                   className="mx-4 flex-grow"

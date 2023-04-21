@@ -60,11 +60,8 @@ const Topbar = ({ onSearchUpdate }) => {
           })}
         >
           <div>
-            <Link
-              to="/"
-              className="md:flex items-center no-underline space-x-3 hidden"
-            >
-              <img src={Logo} alt="Pokebook Logo" className="h-16" />
+            <Link to="/" className="flex items-center no-underline space-x-3 ">
+              <img src={Logo} alt="Pokebook Logo" className="sm:h-16 h-12" />
               <span className="text-2xl font-bold pb-2 my-0 text-slate-800 flex items-center">
                 Poké
                 <Text color={theme.primaryColor}>book</Text>
@@ -90,7 +87,7 @@ const Topbar = ({ onSearchUpdate }) => {
               mr="xl"
             />
           </MediaQuery>
-          <div className="mx-4 mt-4">
+          <div className="mx-6 mt-4">
             <Link
               to="/"
               className="md:flex items-center no-underline space-x-3 hidden"
@@ -114,7 +111,7 @@ const Topbar = ({ onSearchUpdate }) => {
               onChange={(event) => onSearchUpdate(event.target.value)}
             />
           </div>
-          <div className="flex items-center space-x-4 mx-4 ">
+          <div className="flex items-center space-x-4 mx-6 ">
             <ActionIcon
               variant="outline"
               color={dark ? "yellow" : "gray"}

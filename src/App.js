@@ -86,7 +86,6 @@ function AppContent() {
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route path="/list-view" element={<ListView />} />
-              {/* <Route path="/contact" component={Contact} /> */}
             </Routes>
           </Layout>
         </BrowserRouter>
