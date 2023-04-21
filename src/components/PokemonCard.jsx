@@ -171,13 +171,11 @@ const PokemonCard = ({ pokemon, allPokemon }) => {
         {hovered && (
           <div className="py-3 transition-all duration-300 ease-in-out">
             <Button
+              onClick={open}
               rightIcon={<AiFillEye size={18} />}
               className="rounded-2xl text-xs sm:text-sm text-white border-none transition ease-in-out duration-150 cursor-pointer  w-full py-3"
             >
-              <div
-                onClick={open}
-                className="flex items-center justify-start mx-3 space-x-6 text-xs sm:text-sm"
-              >
+              <div className="flex items-center justify-start mx-3 space-x-6 text-xs sm:text-sm">
                 <span>View Pokemon</span>
               </div>
             </Button>

@@ -7,18 +7,29 @@ import {
   MediaQuery,
   Button,
   useMantineColorScheme,
+  Modal,
+  Text,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsSun } from "react-icons/bs";
 import { FaMoon } from "react-icons/fa";
+import { useTheme } from "../contexts/ColorTheme";
 
 const Topbar = ({ onSearchUpdate }) => {
+  const [openColorModal, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
+  const { themeColor, setThemeColor } = useTheme();
+
+  //Function to change Color
+  const handleColorChange = (newColor) => {
+    setThemeColor(newColor);
+    close();
+  };
 
   return (
     <>
@@ -57,7 +68,60 @@ const Topbar = ({ onSearchUpdate }) => {
               {dark ? <BsSun size="1.1rem" /> : <FaMoon size="1.1rem" />}
             </ActionIcon>
 
-            <Button className="rounded-full border-2 shadow-md border-white"></Button>
+            <Modal
+              opened={openColorModal}
+              classNames={{
+                header: "shadow-sm flex justify-center", // Added 'flex' and 'justify-center'
+                title: "text-xl font-bold items-center", // Removed 'flex' and 'flex-end'
+                body: "px-0",
+              }}
+              onClose={close}
+              title={<Text color={theme.fn.primaryColor()}>Choose Theme</Text>}
+              size="sm"
+              centered
+              withCloseButton={false}
+              radius="xl"
+              transitionProps={{
+                transition: "fade",
+                duration: 400,
+                timingFunction: "linear",
+              }}
+              overlayProps={{
+                color:
+                  theme.colorScheme === "dark"
+                    ? theme.colors.dark[9]
+                    : theme.colors.primaryColor,
+                opacity: 0.2,
+                blur: 3,
+              }}
+            >
+              <div className="flex items-center justify-center py-6 space-x-4 bg-slate-50 sm:py-9">
+                <Button
+                  onClick={() => handleColorChange("enyata-pink")}
+                  color="enyata-pink"
+                  className="rounded-full border-2 sm:p-8  shadow-md border-white"
+                ></Button>
+                <Button
+                  onClick={() => handleColorChange("enyata-blue")}
+                  color="enyata-blue"
+                  className="rounded-full sm:p-8 border-2 shadow-md border-white"
+                ></Button>
+                <Button
+                  onClick={() => handleColorChange("enyata-gold")}
+                  color="enyata-gold"
+                  className="rounded-full sm:p-8 border-2 shadow-md border-white"
+                ></Button>
+                <Button
+                  onClick={() => handleColorChange("enyata-violet")}
+                  color="enyata-violet"
+                  className="rounded-full sm:p-8 border-2 shadow-md border-white"
+                ></Button>
+              </div>
+            </Modal>
+            <Button
+              onClick={open}
+              className="rounded-full border-2 shadow-md border-white"
+            ></Button>
           </div>
         </div>
       </Header>
