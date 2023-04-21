@@ -26,13 +26,13 @@ const SimilarPokemon = ({ targetPokemon, allPokemon }) => {
             shadow="sm"
             padding="xs"
             radius={16}
-            className="relative overflow-visible w-24   sm:w-full mx-auto sm:h-32"
+            className="relative overflow-visible w-32   sm:w-full mx-auto sm:h-32"
           >
-            <div className="sm:h-16 h-12 bg-pokemonBg rounded-xl text-center relative">
+            <div className=" h-16 bg-pokemonBg rounded-xl text-center relative">
               <img
                 src={pokemon.sprites.other.dream_world.front_default}
                 alt={pokemon.name}
-                className="absolute -top-2 left-1/2 transform -translate-x-1/2 h-16 sm:h-20 -translate-y-4"
+                className="absolute -top-2 left-1/2 transform -translate-x-1/2 h-20 sm:h-20 -translate-y-4"
               />
             </div>
             <Text

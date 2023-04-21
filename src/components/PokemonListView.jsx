@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PokemonPagination from "./Pagination";
 import PokemonCard from "./PokemonCard";
 import Topbar from "./Topbar";
-import Search from "./Search";
+import { Skeleton } from "@mantine/core";
 
 // Fetching Pokemon Data
 async function fetchAllPokemonData(limit = 10, offset = 0) {
@@ -23,6 +23,9 @@ async function fetchAllPokemonData(limit = 10, offset = 0) {
 }
 
 const ListView = () => {
+  //Setting Loading State
+  const [isLoading, setIsLoading] = useState(true);
+
   // Setting Pokemon State
   const [pokemonData, setPokemonData] = useState([]);
 
@@ -39,6 +42,7 @@ const ListView = () => {
       const offset = (currentPage - 1) * itemsPerPage;
       const data = await fetchAllPokemonData(itemsPerPage, offset);
       setPokemonData(data);
+      setIsLoading(false);
     };
 
     getPokemonData();
@@ -70,25 +74,20 @@ const ListView = () => {
       <Topbar onSearchUpdate={handleSearchUpdate} />
 
       <div className="mt-10 pb-4 mb-6 max-w-[80%] mx-auto">
-        {pokemonData.length ? (
-          <div className="grid xl:grid-cols-4 flex-grow lg:grid-cols-3 md:grid-cols-2 sm:grid-col-2  gap-3">
-            {filteredPokemonData.length ? (
-              filteredPokemonData.map((pokemon) => (
-                <PokemonCard
-                  key={pokemon.id}
-                  pokemon={pokemon}
-                  allPokemon={pokemonData}
-                />
-              ))
-            ) : (
-              <h3 className="text-center text-lg">
-                Sorry, No Pokémon found! 🙇🏾‍♂️
-              </h3>
-            )}
-          </div>
-        ) : (
-          <h1>Loading</h1>
-        )}
+        <div className="grid xl:grid-cols-4 flex-grow lg:grid-cols-3 md:grid-cols-2 sm:grid-col-2 gap-3">
+          {isLoading && filteredPokemonData.length === 0 ? (
+            <h3 className="text-center text-lg">Sorry, No Pokémon found! 🙇🏾‍♂️</h3>
+          ) : (
+            filteredPokemonData.map((pokemon) => (
+              <PokemonCard
+                key={pokemon.id}
+                pokemon={pokemon}
+                allPokemon={pokemonData}
+                isLoading={isLoading}
+              />
+            ))
+          )}
+        </div>
         <div className="mx-4 my-8 hidden md:block">
           <PokemonPagination
             pokemon={pokemonData}

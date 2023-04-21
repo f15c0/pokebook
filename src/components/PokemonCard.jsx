@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDisclosure } from "@mantine/hooks";
 import ColorThief from "colorthief";
+
 import {
   Card,
   Text,
@@ -10,6 +11,7 @@ import {
   createStyles,
   SegmentedControl,
   rem,
+  Skeleton,
 } from "@mantine/core";
 import { AiFillEye } from "react-icons/ai";
 import { CgArrowLeft } from "react-icons/cg";
@@ -47,7 +49,7 @@ function lightenColor(color, percent) {
   };
 }
 
-const PokemonCard = ({ pokemon, allPokemon }) => {
+const PokemonCard = ({ pokemon, allPokemon, isLoading }) => {
   const imgURL = `${pokemon.sprites.other.dream_world.front_default}`;
   const [rgb, setRgb] = useState([]);
 
@@ -106,34 +108,29 @@ const PokemonCard = ({ pokemon, allPokemon }) => {
     }
   };
 
-  const useStyles = createStyles((theme) => ({
-    root: {
-      backgroundColor:
-        theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
-      boxShadow: theme.shadows.md,
-      border: `${rem(1)} solid ${
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[4]
-          : theme.colors.gray[1]
-      }`,
-    },
-
-    indicator: {
-      backgroundImage: theme.fn.gradient({ from: "pink", to: "orange" }),
-    },
-
-    control: {
-      border: "0 !important",
-    },
-
-    label: {
-      "&, &:hover": {
-        "&[data-active]": {
-          color: theme.white,
-        },
-      },
-    },
-  }));
+  if (isLoading) {
+    return (
+      <div className="mt-10 mx-3 sm:mx-2">
+        <Card
+          shadow="sm"
+          padding="sm"
+          radius="md"
+          className="relative overflow-visible"
+        >
+          <div className="h-36  bg-pokemonBg rounded-lg text-center relative">
+            <Skeleton height="100%" />
+          </div>
+          <div className="pt-3">
+            <Skeleton height={20} />
+          </div>
+          <div className="pt-3 flex space-x-4 justify-center">
+            <Skeleton height={10} width={100} />
+            <Skeleton height={10} width={100} />
+          </div>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="mt-10 mx-3 sm:mx-2 ">
