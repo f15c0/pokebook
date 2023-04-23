@@ -35,7 +35,7 @@ const PokemonPagination = ({
         value={itemsPerPage.toString()}
         onChange={handleItemsPerPageChange}
         size="sm"
-        className="w-20 hidden sm:block"
+        className="w-20 hidden sm:block custom-font"
         data={["8", "12", "16", "24"]}
       />
     </div>

@@ -25,6 +25,17 @@ module.exports = {
           "ClashDisplay-Bold",
           "sans-serif",
         ],
+        generalsans: [
+          "GeneralSans-Variable",
+          "GeneralSans-Extralight",
+          "GeneralSans-Light",
+          "GeneralSans-Regular",
+          "GeneralSans-Italic",
+          "GeneralSans-Medium",
+          "GeneralSans-Semibold",
+          "GeneralSans-Bold",
+          "sans-serif",
+        ],
       },
       fontWeight: {
         extralight: 200,

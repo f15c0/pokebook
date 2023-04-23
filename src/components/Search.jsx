@@ -1,4 +1,4 @@
-import { TextInput, ActionIcon, useMantineTheme } from "@mantine/core";
+import { TextInput, ActionIcon, useMantineTheme, Text } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 
@@ -16,6 +16,7 @@ const Search = () => {
     input: {
       width: "100%",
       border: `4px solid ${theme.fn.primaryColor()}`,
+      fontFamily: "GeneralSans-Regular",
     },
   };
 

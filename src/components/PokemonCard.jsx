@@ -77,7 +77,11 @@ const PokemonCard = ({ pokemon, allPokemon, isLoading }) => {
   const handleMouseLeave = () => {
     setHovered(false);
   };
-
+  //
+  //Helper Function to Capitalize a word
+  function capitalizeFirstLetter(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
   //
   const getTypeEmoji = (typeName) => {
     switch (typeName) {
@@ -160,11 +164,11 @@ const PokemonCard = ({ pokemon, allPokemon, isLoading }) => {
               variant="light"
               color="gray"
               radius={24}
-              className="flex justify-between items-center text-sm"
+              className="flex justify-between items-center text-sm font-generalsans font-normal"
               compact
             >
               {getTypeEmoji(typeObj.type.name)}
-              {typeObj.type.name}
+              {capitalizeFirstLetter(typeObj.type.name)}
             </Button>
           ))}
         </Group>
@@ -176,7 +180,7 @@ const PokemonCard = ({ pokemon, allPokemon, isLoading }) => {
               rightIcon={<AiFillEye size={18} />}
               className="rounded-2xl text-xs sm:text-sm text-white border-none transition ease-in-out duration-150 cursor-pointer  w-full py-3"
             >
-              <div className="flex items-center justify-start mx-3 space-x-6 text-xs sm:text-sm">
+              <div className=" font-generalsans font-normal flex items-center justify-start mx-3 space-x-6 text-xs sm:text-sm">
                 <span>View Pokemon</span>
               </div>
             </Button>
@@ -221,10 +225,11 @@ const PokemonCard = ({ pokemon, allPokemon, isLoading }) => {
                   key={typeObj.type.name}
                   variant="light"
                   color="gray"
-                  className="text-sm rounded-3xl px-6"
+                  className="text-sm rounded-3xl px-6 font-generalsans font-normal"
                   compact
                 >
-                  {getTypeEmoji(typeObj.type.name)} {typeObj.type.name}
+                  {getTypeEmoji(typeObj.type.name)}{" "}
+                  {capitalizeFirstLetter(typeObj.type.name)}
                 </Button>
               ))}
             </Group>
@@ -236,7 +241,7 @@ const PokemonCard = ({ pokemon, allPokemon, isLoading }) => {
           <SimilarPokemon targetPokemon={pokemon} allPokemon={allPokemon} />
         )}
 
-        <Group position="center" className="pt-4 mt-2 bottom-0">
+        <Group position="center" className="pt-4 mt-2 bottom-0 ">
           <SegmentedControl
             transitionDuration={500}
             transitionTimingFunction="linear"

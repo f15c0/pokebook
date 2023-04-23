@@ -18,7 +18,7 @@ const Home = () => {
             book
           </Text>
         </h3>
-        <p className="pb-2 text-sm sm:text-base">
+        <p className="pb-2 text-sm sm:text-base font-generalsans font-normal">
           Largest Pokémon index with information <br /> about every Pokemon you
           can think of.
         </p>
@@ -27,7 +27,10 @@ const Home = () => {
         <Search />
       </div>
       <div className="flex justify-center pt-4">
-        <Link to="/list-view" className="text-slate-900">
+        <Link
+          to="/list-view"
+          className="text-slate-900 font-generalsans font-medium"
+        >
           View all
         </Link>
       </div>
