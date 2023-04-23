@@ -12,9 +12,9 @@ const Home = () => {
             <img src={Logo} alt="Pokebook Logo" className="h-32 sm:h-[100%]" />
           </Link>
         </div>
-        <h3 className="text-3xl py-0 my-0 flex items-center">
+        <h3 className="text-3xl py-0 my-0 flex items-center font-clashdisplay font-semibold">
           Poké
-          <Text className="ml-1" color={theme.primaryColor}>
+          <Text className="ml-1 font-clashdisplay" color={theme.primaryColor}>
             book
           </Text>
         </h3>

@@ -1,9 +1,5 @@
 import "./App.css";
-import {
-  MantineProvider,
-  ColorSchemeProvider,
-  ColorScheme,
-} from "@mantine/core";
+import { MantineProvider, ColorSchemeProvider } from "@mantine/core";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 import Home from "./pages/Home";
