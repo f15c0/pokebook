@@ -93,9 +93,11 @@ const Topbar = ({ onSearchUpdate }) => {
               className="md:flex items-center no-underline space-x-3 hidden"
             >
               <img src={Logo} alt="Pokebook Logo" className="h-16" />
-              <span className="text-2xl font-bold pb-2 my-0 text-slate-800 flex items-center">
+              <span className="text-2xl font-bold font-clashdisplay pb-2 my-0 text-slate-800 flex items-center">
                 Poké
-                <Text color={theme.primaryColor}>book</Text>
+                <Text color={theme.primaryColor} className="font-clashdisplay">
+                  book
+                </Text>
               </span>
             </Link>
           </div>
@@ -125,12 +127,19 @@ const Topbar = ({ onSearchUpdate }) => {
             <Modal
               opened={openColorModal}
               classNames={{
-                header: "shadow-sm flex justify-center",
-                title: "text-xl font-bold items-center",
+                header: "shadow-sm flex justify-center ",
+                title: "text-xl font-bold items-center ",
                 body: "px-0",
               }}
               onClose={close}
-              title={<Text color={theme.fn.primaryColor()}>Choose Theme</Text>}
+              title={
+                <Text
+                  color={theme.fn.primaryColor()}
+                  className="font-semibold font-clashdisplay"
+                >
+                  Choose Theme
+                </Text>
+              }
               size="sm"
               centered
               withCloseButton={false}

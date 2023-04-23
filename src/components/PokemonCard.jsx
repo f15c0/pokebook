@@ -150,7 +150,7 @@ const PokemonCard = ({ pokemon, allPokemon, isLoading }) => {
           />
         </div>
 
-        <Text weight={500} className="text-center pt-3 text-2xl">
+        <Text className="text-center pt-3 text-2xl font-medium font-clashdisplay">
           {pokemon?.name}
         </Text>
         <Group position="center" className="flex pb-2 pt-1">
@@ -212,7 +212,9 @@ const PokemonCard = ({ pokemon, allPokemon, isLoading }) => {
           </div>
 
           <div className=" border-none shadow-sm">
-            <h1 className="text-center pb-0 mb-0 pt-2">{pokemon.name}</h1>
+            <h1 className="text-center pb-0 mb-0 pt-2 font-clashdisplay font-semibold">
+              {pokemon.name}
+            </h1>
             <Group position="center" mb="xs" className="flex pb-3 mt-1 pt-1">
               {pokemon.types.map((typeObj) => (
                 <Button

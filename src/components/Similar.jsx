@@ -16,7 +16,7 @@ const SimilarPokemon = ({ targetPokemon, allPokemon }) => {
   const similarPokemon = findSimilarPokemon(targetPokemon, allPokemon);
   return (
     <>
-      <h3 className="text-center pt-0 mt-2 pb-2 sm:text-lg text-md">
+      <h3 className="text-center pt-0 mt-2 pb-2 sm:text-lg text-md font-semibold font-clashdisplay">
         Similar Pokémon
       </h3>
       <div className="sm:grid grid  grid-cols-2 pb-6 mb-3 gap-6 sm:gap-6 sm:max-w-[80%] mx-auto">
@@ -35,10 +35,7 @@ const SimilarPokemon = ({ targetPokemon, allPokemon }) => {
                 className="absolute -top-2 left-1/2 transform -translate-x-1/2 h-20 sm:h-20 -translate-y-4"
               />
             </div>
-            <Text
-              weight={500}
-              className="text-center sm:text-base text-xs pt-2"
-            >
+            <Text className="text-center sm:text-base text-xs pt-2 font-medium font-clashdisplay">
               {pokemon.name}
             </Text>
           </Card>

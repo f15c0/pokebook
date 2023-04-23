@@ -10,7 +10,7 @@ function capitalizeFirstLetter(str) {
 const PokemonStats = ({ pokemon }) => {
   return (
     <>
-      <h3 className="text-center">Stats</h3>
+      <h3 className="text-center font-semibold font-clashdisplay">Stats</h3>
       <Paper shadow="md" p="xs" className="mt-0 pt-0 pb-4">
         <div className="grid grid-cols-1 gap-4">
           <div className="col-span-2">
@@ -19,7 +19,7 @@ const PokemonStats = ({ pokemon }) => {
                 key={statObj.stat.name}
                 className="flex items-center justify-between"
               >
-                <Text className="w-32">
+                <Text className="w-32  font-clashdisplay">
                   {capitalizeFirstLetter(statObj.stat.name)}
                 </Text>
                 <Progress
@@ -27,7 +27,9 @@ const PokemonStats = ({ pokemon }) => {
                   className="mx-4 flex-grow"
                   value={statObj.base_stat}
                 />
-                <Text>{statObj.base_stat}</Text>
+                <Text className="font-semibold font-clashdisplay">
+                  {statObj.base_stat}
+                </Text>
               </li>
             ))}
           </div>

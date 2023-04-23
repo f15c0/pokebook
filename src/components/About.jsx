@@ -3,7 +3,9 @@ import { Paper } from "@mantine/core";
 const AboutPokemon = ({ pokemon }) => {
   return (
     <>
-      <h3 className="text-center pb-0 mb-0">About</h3>
+      <h3 className="text-center pb-0 mb-0 font-clashdisplay font-semibold">
+        About
+      </h3>
       <Paper
         shadow="md"
         p="xs"
@@ -11,14 +13,18 @@ const AboutPokemon = ({ pokemon }) => {
       >
         <div className="flex justify-center space-x-6 ">
           <div>
-            <p>Height</p>
-            <p>Weight</p>
-            <p>Abilities</p>
+            <p className="font-clashdisplay font-normal">Height</p>
+            <p className="font-clashdisplay font-normal">Weight</p>
+            <p className="font-clashdisplay font-normal">Abilities</p>
           </div>
           <div>
-            <p className="font-bold">{(pokemon.height * 0.1).toFixed(1)}m</p>
-            <p className="font-bold">{(pokemon.weight * 0.1).toFixed(1)}kg</p>
-            <p className="font-bold ">
+            <p className="font-semibold font-clashdisplay">
+              {(pokemon.height * 0.1).toFixed(1)}m
+            </p>
+            <p className="font-semibold font-clashdisplay">
+              {(pokemon.weight * 0.1).toFixed(1)}kg
+            </p>
+            <p className="font-semibold font-clashdisplay ">
               {pokemon.abilities.map((abilityObj) => (
                 <li key={abilityObj.ability.name} className="py-0 my-0 text-sm">
                   {abilityObj.ability.name}
