@@ -76,7 +76,10 @@ const Topbar = ({ onSearchUpdate }) => {
       </Portal>
       {/* End of Pinned Header */}
 
-      <Header height={{ base: 50, md: 70 }} className="shadow-sm pt-2 sm:pt-0">
+      <Header
+        height={{ base: 50, md: 70 }}
+        className="shadow-md pt-2 sm:pt-0 bg-transparent"
+      >
         <div className="flex items-center justify-between">
           <MediaQuery largerThan="sm" styles={{ display: "none" }}>
             <Burger
@@ -106,7 +109,12 @@ const Topbar = ({ onSearchUpdate }) => {
             <TextInput
               icon={<AiOutlineSearch size="1.1rem" stroke={1.5} />}
               radius="xl"
-              className="border-4 hidden sm:block text-sm sm:text-md"
+              className=" hidden sm:block text-sm sm:text-md"
+              styles={{
+                input: {
+                  backgroundColor: "transparent",
+                },
+              }}
               size="md"
               placeholder="Enter pokemon name"
               rightSectionWidth={42}

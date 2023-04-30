@@ -17,6 +17,7 @@ const Search = () => {
       width: "100%",
       border: `4px solid ${theme.fn.primaryColor()}`,
       fontFamily: "GeneralSans-Regular",
+      backgroundColor: "transparent",
     },
   };
 
